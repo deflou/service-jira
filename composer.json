@@ -1,0 +1,21 @@
+{
+  "name": "deflou/service-jira",
+  "description": "Jira Atlassian service package for DeFlou",
+  "keywords": ["jira", "deflou"],
+  "type": "project",
+  "license": "BSD-3-Clause",
+  "require": {
+    "php": ">=7.0.0",
+    "vlucas/phpdotenv": "^2.4",
+    "guzzlehttp/guzzle": "^6.3",
+    "cypresslab/gitelephant": "~1.0",
+
+    "deflou/service-config": "*",
+    "deflou/service-describer": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "deflou\\": "src/"
+    }
+  }
+}
