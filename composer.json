@@ -11,7 +11,11 @@
     "cypresslab/gitelephant": "~1.0",
 
     "deflou/service-config": "*",
-    "deflou/service-describer": "*"
+    "deflou/service-describer": "*",
+    "deflou/service-activities": "*",
+    "deflou/service": "*",
+    "deflou/compares": "*",
+    "deflou/user": "*"
   },
   "autoload": {
     "psr-4": {

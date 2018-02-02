@@ -3,7 +3,7 @@
 /**
  * General info
  */
-use deflou\interfaces\services\IServiceConfig as Schema;
+use deflou\interfaces\services\configs\IServiceConfig as Schema;
 use deflou\interfaces\servies\jira\IServiceJira as JiraSchema;
 use deflou\interfaces\services\jira\IJiraIssue as Issue;
 
@@ -21,6 +21,7 @@ use deflou\interfaces\servies\jira\events\IJiraEventIssueChanged as IssueChanged
 /**
  * Compares
  */
+use deflou\interfaces\ICompare as Compare;
 use deflou\components\compares\CompareVersion;
 use deflou\components\services\jira\compares\ComparePriority;
 use deflou\components\services\jira\compares\CompareLabels;
@@ -31,6 +32,7 @@ return [
         Schema::CONFIG__TITLE => 'Jira Atlassian',
         Schema::CONFIG__DESCRIPTION => 'Task tracker',
         Schema::CONFIG__SERVICE_RESOLVER => \deflou\components\services\jira\Resolver::class,
+        Schema::CONFIG__SERVICE_DESCRIBER => \deflou\components\services\jira\Describer::class,
         Schema::CONFIG__SERVICE_VERSION => '1.0.0',
         Schema::CONFIG__SERVICE_AUTHORS => [
             [
@@ -71,11 +73,11 @@ return [
                         Schema::CONFIG__TITLE => VersionReleased::PARAM__ID__TITLE,
                         Schema::CONFIG__DESCRIPTION => VersionReleased::PARAM__ID__DESCRIPTION,
                         Schema::CONFIG__PARAM_COMPARES => [
-                            Schema::COMPARE__EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__NOT_EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__GREATER => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__LOWER => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__LIKE => Schema::COMPARE__DEFAULT,
+                            Compare::EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::NOT_EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::GREATER => Compare::DEFAULT_COMPARE,
+                            Compare::LOWER => Compare::DEFAULT_COMPARE,
+                            Compare::LIKE => Compare::DEFAULT_COMPARE,
                         ]
                     ],
                     [
@@ -83,11 +85,11 @@ return [
                         Schema::CONFIG__TITLE => VersionReleased::PARAM__VERSION__TITLE,
                         Schema::CONFIG__DESCRIPTION => VersionReleased::PARAM__VERSION__DESCRIPTION,
                         Schema::CONFIG__PARAM_COMPARES => [
-                            Schema::COMPARE__EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__NOT_EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__GREATER => CompareVersion::class,
-                            Schema::COMPARE__LOWER => CompareVersion::class,
-                            Schema::COMPARE__LIKE => Schema::COMPARE__DEFAULT,
+                            Compare::EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::NOT_EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::GREATER => CompareVersion::class,
+                            Compare::LOWER => CompareVersion::class,
+                            Compare::LIKE => Compare::DEFAULT_COMPARE,
                         ]
                     ],
                     [
@@ -95,9 +97,9 @@ return [
                         Schema::CONFIG__TITLE => VersionReleased::PARAM__DESCRIPTION__TITLE,
                         Schema::CONFIG__DESCRIPTION => VersionReleased::PARAM__DESCRIPTION__DESCRIPTION,
                         Schema::CONFIG__PARAM_COMPARES => [
-                            Schema::COMPARE__EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__NOT_EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__LIKE => Schema::COMPARE__DEFAULT,
+                            Compare::EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::NOT_EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::LIKE => Compare::DEFAULT_COMPARE
                         ]
                     ],
                     [
@@ -105,9 +107,9 @@ return [
                         Schema::CONFIG__TITLE => VersionReleased::PARAM__PROJECT__TITLE,
                         Schema::CONFIG__DESCRIPTION => VersionReleased::PARAM__PROJECT__DESCRIPTION,
                         Schema::CONFIG__PARAM_COMPARES => [
-                            Schema::COMPARE__EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__NOT_EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__LIKE => Schema::COMPARE__DEFAULT,
+                            Compare::EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::NOT_EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::LIKE => Compare::DEFAULT_COMPARE,
                         ],
                         Schema::CONFIG__PARAM_VALUE => [
                             Schema::CONFIG__PARAM_VALUE__CLASS =>
@@ -129,11 +131,11 @@ return [
                         Schema::CONFIG__TITLE => IssueChanged::PARAM__ISSUE_ID__TITLE,
                         Schema::CONFIG__DESCRIPTION => IssueChanged::PARAM__ISSUE_ID__DESCRIPTION,
                         Schema::CONFIG__PARAM_COMPARES => [
-                            Schema::COMPARE__EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__NOT_EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__GREATER => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__LOWER => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__LIKE => Schema::COMPARE__DEFAULT,
+                            Compare::EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::NOT_EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::GREATER => Compare::DEFAULT_COMPARE,
+                            Compare::LOWER => Compare::DEFAULT_COMPARE,
+                            Compare::LIKE => Compare::DEFAULT_COMPARE,
                         ]
                     ],
                     [
@@ -141,9 +143,9 @@ return [
                         Schema::CONFIG__TITLE => IssueChanged::PARAM__ISSUE_KEY__TITLE,
                         Schema::CONFIG__DESCRIPTION => IssueChanged::PARAM__ISSUE_KEY__DESCRIPTION,
                         Schema::CONFIG__PARAM_COMPARES => [
-                            Schema::COMPARE__EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__NOT_EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__LIKE => Schema::COMPARE__DEFAULT,
+                            Compare::EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::NOT_EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::LIKE => Compare::DEFAULT_COMPARE,
                         ]
                     ],
                     [
@@ -151,11 +153,11 @@ return [
                         Schema::CONFIG__TITLE => IssueChanged::PARAM__PRIORITY__TITLE,
                         Schema::CONFIG__DESCRIPTION => IssueChanged::PARAM__PRIORITY__DESCRIPTION,
                         Schema::CONFIG__PARAM_COMPARES => [
-                            Schema::COMPARE__EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__NOT_EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__GREATER => ComparePriority::class,
-                            Schema::COMPARE__LOWER => ComparePriority::class,
-                            Schema::COMPARE__LIKE => Schema::COMPARE__DEFAULT,
+                            Compare::EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::NOT_EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::GREATER => ComparePriority::class,
+                            Compare::LOWER => ComparePriority::class,
+                            Compare::LIKE => Compare::DEFAULT_COMPARE,
                         ]
                     ],
                     [
@@ -163,9 +165,9 @@ return [
                         Schema::CONFIG__TITLE => IssueChanged::PARAM__LABELS__TITLE,
                         Schema::CONFIG__DESCRIPTION => IssueChanged::PARAM__LABELS__DESCRIPTION,
                         Schema::CONFIG__PARAM_COMPARES => [
-                            Schema::COMPARE__EQUAL => CompareLabels::class,
-                            Schema::COMPARE__NOT_EQUAL => CompareLabels::class,
-                            Schema::COMPARE__LIKE => CompareLabels::class,
+                            Compare::EQUAL => CompareLabels::class,
+                            Compare::NOT_EQUAL => CompareLabels::class,
+                            Compare::LIKE => CompareLabels::class,
                         ]
                     ],
                     [
@@ -173,9 +175,9 @@ return [
                         Schema::CONFIG__TITLE => IssueChanged::PARAM__ASSIGNEE__TITLE,
                         Schema::CONFIG__DESCRIPTION => IssueChanged::PARAM__ASSIGNEE__TITLE,
                         Schema::CONFIG__PARAM_COMPARES => [
-                            Schema::COMPARE__EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__NOT_EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__LIKE => Schema::COMPARE__DEFAULT,
+                            Compare::EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::NOT_EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::LIKE => Compare::DEFAULT_COMPARE,
                         ]
                     ],
                     [
@@ -183,9 +185,9 @@ return [
                         Schema::CONFIG__TITLE => IssueChanged::PARAM__STATUS__TITLE,
                         Schema::CONFIG__DESCRIPTION => IssueChanged::PARAM__STATUS__DESCRIPTION,
                         Schema::CONFIG__PARAM_COMPARES => [
-                            Schema::COMPARE__EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__NOT_EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__LIKE => Schema::COMPARE__DEFAULT,
+                            Compare::EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::NOT_EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::LIKE => Compare::DEFAULT_COMPARE,
                         ]
                     ],
                     [
@@ -193,9 +195,9 @@ return [
                         Schema::CONFIG__TITLE => IssueChanged::PARAM__COMMENTS__TITLE,
                         Schema::CONFIG__DESCRIPTION => IssueChanged::PARAM__COMMENTS__DESCRIPTION,
                         Schema::CONFIG__PARAM_COMPARES => [
-                            Schema::COMPARE__EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__NOT_EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__LIKE => Schema::COMPARE__DEFAULT,
+                            Compare::EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::NOT_EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::LIKE => Compare::DEFAULT_COMPARE,
                         ]
                     ],
                     [
@@ -203,9 +205,9 @@ return [
                         Schema::CONFIG__TITLE => IssueChanged::PARAM__SUMMARY__TITLE,
                         Schema::CONFIG__DESCRIPTION => IssueChanged::PARAM__STATUS__DESCRIPTION,
                         Schema::CONFIG__PARAM_COMPARES => [
-                            Schema::COMPARE__EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__NOT_EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__LIKE => Schema::COMPARE__DEFAULT,
+                            Compare::EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::NOT_EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::LIKE => Compare::DEFAULT_COMPARE,
                         ]
                     ],
                     [
@@ -213,9 +215,9 @@ return [
                         Schema::CONFIG__TITLE => IssueChanged::PARAM__DESCRIPTION__TITLE,
                         Schema::CONFIG__DESCRIPTION => IssueChanged::PARAM__DESCRIPTION__DESCRIPTION,
                         Schema::CONFIG__PARAM_COMPARES => [
-                            Schema::COMPARE__EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__NOT_EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__LIKE => Schema::COMPARE__DEFAULT,
+                            Compare::EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::NOT_EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::LIKE => Compare::DEFAULT_COMPARE,
                         ]
                     ],
                     [
@@ -223,9 +225,9 @@ return [
                         Schema::CONFIG__TITLE => IssueChanged::PARAM__PROJECT__TITLE,
                         Schema::CONFIG__DESCRIPTION => IssueChanged::PARAM__PROJECT__DESCRIPTION,
                         Schema::CONFIG__PARAM_COMPARES => [
-                            Schema::COMPARE__EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__NOT_EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__LIKE => Schema::COMPARE__DEFAULT,
+                            Compare::EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::NOT_EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::LIKE => Compare::DEFAULT_COMPARE,
                         ]
                     ],
                     [
@@ -233,9 +235,9 @@ return [
                         Schema::CONFIG__TITLE => IssueChanged::PARAM__PROJECT_KEY__TITLE,
                         Schema::CONFIG__DESCRIPTION => IssueChanged::PARAM__PROJECT_KEY__DESCRIPTION,
                         Schema::CONFIG__PARAM_COMPARES => [
-                            Schema::COMPARE__EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__NOT_EQUAL => Schema::COMPARE__DEFAULT,
-                            Schema::COMPARE__LIKE => Schema::COMPARE__DEFAULT,
+                            Compare::EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::NOT_EQUAL => Compare::DEFAULT_COMPARE,
+                            Compare::LIKE => Compare::DEFAULT_COMPARE,
                         ]
                     ]
                 ],
